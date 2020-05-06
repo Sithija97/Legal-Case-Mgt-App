@@ -1,3 +1,4 @@
+import 'package:basics/Dash.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -28,7 +29,7 @@ class _AuthState extends State<Auth> {
     try {
       authResult = await auth.signInWithEmailAndPassword(email: email, password: password);
       if(authResult.user.isEmailVerified){
-        //navigation
+        // Navigator.push(context, MaterialPageRoute(builder: (context)=>Dash()));//stack-navigator
       }
     } catch (e) {
       print(e);
@@ -69,10 +70,10 @@ class _AuthState extends State<Auth> {
                   )),
               Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: FlatButton(child: Text("SignUp"), onPressed: signUp(emailController.text,passwordController.text))),
+                  child: FlatButton(child: Text("SignUp"), onPressed:()=> signUp(emailController.text,passwordController.text))),
               Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: FlatButton(child: Text("Signin"), onPressed: signIn(emailController.text,passwordController.text))),
+                  child: FlatButton(child: Text("Signin"), onPressed:()=> signIn(emailController.text,passwordController.text))),
             ]),
       ),
     );
