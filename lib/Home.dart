@@ -7,7 +7,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final Firestore firestore = Firestore.instance;
+  final Firestore firestore = Firestore.instance; //created an instance of firestore
 
   void create() async{
     try{
