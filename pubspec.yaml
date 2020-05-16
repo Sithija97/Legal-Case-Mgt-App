@@ -28,7 +28,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   cloud_firestore:
-  firebase_auth:
+  firebase_auth: 
+  google_sign_in: ^4.4.6
+  firebase_ui: ^1.0.8
 
 
 # For information on the generic Dart part of this file, see the
