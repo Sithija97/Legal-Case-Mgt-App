@@ -63,6 +63,11 @@ h1 {
   transform: translateY(5px);
 }
 
+.results-container {
+  max-width: 1168px;
+  margin: 0 auto;
+}
+
 .results {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
