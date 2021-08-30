@@ -2,9 +2,8 @@ import React from "react";
 import Chip from "@material-ui/core/Chip";
 
 function Result({ key, result, url }) {
-  //   const classes = useStyles();
   return (
-    <div className="result">
+    <div className="result" key={key}>
       <h3>{result.title}</h3>
       <p dangerouslySetInnerHTML={{ __html: result.snippet }}></p>
       <a href={url} target="_blank" rel="noreferrer">

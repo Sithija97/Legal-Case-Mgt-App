@@ -100,3 +100,7 @@ h1 {
   font-size: 18px;
   margin-bottom: 16px;
 }
+
+.result p .searchmatch {
+  font-weight: 700;
+}
