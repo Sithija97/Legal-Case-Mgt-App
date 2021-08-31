@@ -14,7 +14,7 @@ function Home() {
       return;
     }
 
-    const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${search}`;
+    const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=600&srsearch=${search}`;
 
     const response = await fetch(endpoint);
 
