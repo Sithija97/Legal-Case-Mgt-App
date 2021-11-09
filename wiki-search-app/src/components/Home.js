@@ -14,7 +14,7 @@ function Home() {
       return;
     }
 
-    const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=600&srsearch=${search}`;
+    const endpoint = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=1000&srsearch=${search}`;
 
     const response = await fetch(endpoint);
 
@@ -50,6 +50,7 @@ function Home() {
         <div className="results">
           {results.map((result, i) => {
             const url = `https://en.wikipedia.org/?curid=${result.pageid}`;
+            console.log("number:", results.length);
             return <Result key={i} result={result} url={url} />;
           })}
         </div>
