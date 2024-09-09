@@ -1,35 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
-import "./App.css";
-
-interface CourtCase {
-  Nature: string;
-  CompanyName: string;
-  Year: number;
-  CaseNumber: string;
-  CourtHouse: string;
-  FacilityNumber: string;
-  Value: string;
-  FirstDefendantName: string;
-  FiledOn: string;
-  SupportDate: string;
-  PreviousDate: string;
-  PreviousStep: string;
-  NextDate: string;
-  NextStep: string;
-  Remark: string;
-}
+import { CourtCase } from "./types";
+import { cleanString } from "./utils";
+import { Button } from "./atoms/button";
 
 function App() {
   const [courtCases, setCourtCases] = useState<CourtCase[]>([]);
-
-  const cleanString = (value: any): string => {
-    if (typeof value === "string") {
-      return value.replace(/[\r\n]+/g, "").trim();
-    }
-    return value?.toString() || "N/A"; // Fallback to "N/A" if the value is undefined
-  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0];
@@ -49,9 +25,6 @@ function App() {
 
       // Log raw data and headers to inspect them
       console.log("Raw Data:", data);
-      if (data.length > 0) {
-        console.log("Headers from first row:", Object.keys(data[0]));
-      }
 
       // Function to find the correct header key dynamically
       const findHeader = (
@@ -102,9 +75,12 @@ function App() {
     <>
       <div>
         <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
-        <button type="button" onClick={handleSubmit}>
+        <Button variant="outline" type="button" onClick={handleSubmit}>
           Console Data
-        </button>
+        </Button>
+        {courtCases.map((data: CourtCase, index) => (
+          <p key={index}>{data.CaseNumber}</p>
+        ))}
       </div>
     </>
   );
