@@ -1,3 +1,5 @@
+import { UsersTemplate } from "@/templates";
+
 export const Users = () => {
-  return <div>Users</div>;
+  return <UsersTemplate />;
 };

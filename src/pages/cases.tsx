@@ -1,3 +1,5 @@
+import { CasesTemplate } from "@/templates";
+
 export const Cases = () => {
-  return <div>Cases</div>;
+  return <CasesTemplate />;
 };

@@ -1,6 +1,6 @@
 import { Toaster } from "@/atoms/toaster";
 import { cn } from "@/lib/utils";
-import { SideNavBar } from "@/organisms/sidebar";
+import { SideNavBar } from "@/organisms";
 import { Outlet } from "react-router-dom";
 
 export const RootLayout = () => {
