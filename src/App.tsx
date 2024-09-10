@@ -3,6 +3,8 @@ import * as XLSX from "xlsx";
 import { CourtCase } from "./types";
 import { cleanString } from "./utils";
 import { Button } from "./atoms/button";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
 
 function App() {
   const [courtCases, setCourtCases] = useState<CourtCase[]>([]);
@@ -73,7 +75,7 @@ function App() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
         <Button variant="outline" type="button" onClick={handleSubmit}>
           Console Data
@@ -81,7 +83,14 @@ function App() {
         {courtCases.map((data: CourtCase, index) => (
           <p key={index}>{data.CaseNumber}</p>
         ))}
-      </div>
+      </div> */}
+      <section
+        className={`min-h-screen ${
+          import.meta.env.VITE_DEV_ENV === "development" ? "debug-screens" : ""
+        }`}
+      >
+        <RouterProvider router={router} />
+      </section>
     </>
   );
 }
