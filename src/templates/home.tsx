@@ -5,10 +5,12 @@ import { CourtCase, CourtCaseWithId } from "@/types";
 import { cleanString } from "@/utils";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "@/config/firebase";
+import { setCases } from "@/store/case-slice";
+import { useAppDispatch } from "@/store/store";
 
 export const HomeTemplate = () => {
+  const dispatch = useAppDispatch();
   const [courtCases, setCourtCases] = React.useState<CourtCase[]>([]);
-  const [fetchedCases, setFetchedCases] = React.useState<CourtCaseWithId[]>([]);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0];
@@ -98,8 +100,7 @@ export const HomeTemplate = () => {
         })
       );
 
-      setFetchedCases(fetchedCasesData); // Update state with the fetched cases including IDs
-      console.log("fetchedCases :", fetchedCases);
+      dispatch(setCases(fetchedCasesData)); // Update redux state with the fetched cases including IDs
     } catch (error) {
       console.error("Error fetching documents: ", error);
     }

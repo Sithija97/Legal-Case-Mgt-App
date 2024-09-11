@@ -10,4 +10,25 @@ export const taskSchema = z.object({
   priority: z.string(),
 });
 
+const courtCaseSchema = z.object({
+  id: z.string(), // Firestore document ID (assumed to be a string)
+  NextDate: z.string(),
+  CourtHouse: z.string(),
+  Year: z.number(),
+  FirstDefendantName: z.string(),
+  FiledOn: z.string(),
+  Nature: z.string(),
+  PreviousDate: z.string(),
+  Value: z.string(),
+  label: z.string(),
+  PreviousStep: z.string(),
+  NextStep: z.string(),
+  Remark: z.string(),
+  CaseNumber: z.string(),
+  FacilityNumber: z.string(),
+  SupportDate: z.string(),
+  CompanyName: z.string(),
+});
+
 export type Task = z.infer<typeof taskSchema>;
+export type Case = z.infer<typeof courtCaseSchema>;

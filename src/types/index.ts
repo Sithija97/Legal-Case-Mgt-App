@@ -18,3 +18,7 @@ export type CourtCase = {
 };
 
 export type CourtCaseWithId = CourtCase & { id: string };
+
+export type InitialCaseState = {
+  cases: any[];
+};
