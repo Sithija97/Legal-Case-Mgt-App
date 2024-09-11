@@ -1,5 +1,5 @@
-import { UsersTemplate } from "@/templates";
+import { TableViewTemplate } from "@/templates";
 
 export const Users = () => {
-  return <UsersTemplate />;
+  return <TableViewTemplate />;
 };

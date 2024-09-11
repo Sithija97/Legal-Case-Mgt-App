@@ -1,5 +1,6 @@
 export type CourtCase = {
   Nature: string;
+  label: string;
   CompanyName: string;
   Year: number;
   CaseNumber: string;
@@ -15,3 +16,5 @@ export type CourtCase = {
   NextStep: string;
   Remark: string;
 };
+
+export type CourtCaseWithId = CourtCase & { id: string };

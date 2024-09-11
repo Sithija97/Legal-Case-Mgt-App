@@ -1,11 +1,14 @@
 import React from "react";
 import { Button } from "@/atoms/button";
 import * as XLSX from "xlsx";
-import { CourtCase } from "@/types";
+import { CourtCase, CourtCaseWithId } from "@/types";
 import { cleanString } from "@/utils";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { db } from "@/config/firebase";
 
 export const HomeTemplate = () => {
   const [courtCases, setCourtCases] = React.useState<CourtCase[]>([]);
+  const [fetchedCases, setFetchedCases] = React.useState<CourtCaseWithId[]>([]);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0];
@@ -40,6 +43,7 @@ export const HomeTemplate = () => {
       // Map the data to the CourtCase type and clean the strings
       const cases: CourtCase[] = (data as any[]).map((row) => ({
         Nature: cleanString(row[findHeader(row, "Nature") ?? ""]),
+        label: cleanString(row[findHeader(row, "label") ?? ""]),
         CompanyName: cleanString(row[findHeader(row, "Company Name") ?? ""]),
         Year: row[findHeader(row, "Year") ?? ""] || 0,
         CaseNumber: cleanString(row[findHeader(row, "Case Number") ?? ""]),
@@ -68,8 +72,42 @@ export const HomeTemplate = () => {
   };
 
   const handleSubmit = () => {
-    console.log(courtCases);
+    // Firestore collection reference
+    const courtCasesCollectionRef = collection(db, "courtCases");
+
+    // Add each case to Firestore
+    courtCases.map(async (item: CourtCase) => {
+      try {
+        await addDoc(courtCasesCollectionRef, item);
+        alert("Document successfully written!");
+      } catch (error) {
+        console.log("Error writing document: ", error);
+      }
+    });
   };
+
+  const fetchCasesFromFirestore = async () => {
+    const courtCasesCollectionRef = collection(db, "courtCases");
+    try {
+      const querySnapshot = await getDocs(courtCasesCollectionRef);
+
+      const fetchedCasesData: CourtCaseWithId[] = querySnapshot.docs.map(
+        (doc) => ({
+          id: doc.id, // Extract the document ID here
+          ...(doc.data() as CourtCase), // Spread the case data
+        })
+      );
+
+      setFetchedCases(fetchedCasesData); // Update state with the fetched cases including IDs
+      console.log("fetchedCases :", fetchedCases);
+    } catch (error) {
+      console.error("Error fetching documents: ", error);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchCasesFromFirestore();
+  }, []);
 
   return (
     <div className="p-16 mt-4 mr-4 border rounded-md">
