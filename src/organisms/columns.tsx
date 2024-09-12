@@ -81,17 +81,16 @@ export const columns: ColumnDef<Case>[] = [
   {
     accessorKey: "CaseNumber",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Case Number" />
+      <DataTableColumnHeader column={column} title="Case No." />
     ),
     cell: ({ row }) => {
-      console.log(row);
       const label = labels.find(
         (label) => label.value === row.original.label.toLowerCase()
       );
 
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[500px] truncate font-medium">
+          <span className="max-w-[480px] truncate font-medium">
             {row.getValue("CaseNumber")}
           </span>
           {label && <Badge variant="outline">{label.label}</Badge>}
@@ -102,10 +101,21 @@ export const columns: ColumnDef<Case>[] = [
   {
     accessorKey: "CourtHouse",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Court House" />
+      <DataTableColumnHeader column={column} title="Court" />
     ),
     cell: ({ row }) => (
       <div className="w-[110px]">{row.getValue("CourtHouse")}</div>
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    accessorKey: "FacilityNumber",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Facility No." />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[115px]">{row.getValue("FacilityNumber")}</div>
     ),
     enableSorting: false,
     enableHiding: false,
@@ -127,15 +137,6 @@ export const columns: ColumnDef<Case>[] = [
     cell: ({ row }) => (
       <div className="w-[120px]">{row.getValue("FirstDefendantName")}</div>
     ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "Value",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Value (Rs.)" />
-    ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("Value")}</div>,
     enableSorting: false,
     enableHiding: false,
   },
@@ -183,28 +184,39 @@ export const columns: ColumnDef<Case>[] = [
     enableSorting: true,
     enableHiding: true,
   },
-  // {
-  //   accessorKey: "NextDate",
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title="Next Date" />
-  //   ),
-  //   cell: ({ row }) => (
-  //     <div className="w-[120px]">{row.getValue("NextDate")}</div>
-  //   ),
-  //   enableSorting: false,
-  //   enableHiding: true,
-  // },
-  // {
-  //   accessorKey: "NextStep",
-  //   header: ({ column }) => (
-  //     <DataTableColumnHeader column={column} title="Next Step" />
-  //   ),
-  //   cell: ({ row }) => (
-  //     <div className="w-[120px]">{row.getValue("NextStep")}</div>
-  //   ),
-  //   enableSorting: false,
-  //   enableHiding: true,
-  // },
+  {
+    accessorKey: "NextDate",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Next Date" />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[120px]">{row.getValue("NextDate")}</div>
+    ),
+    enableSorting: false,
+    enableHiding: true,
+  },
+  {
+    accessorKey: "NextStep",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Next Step" />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[120px]">{row.getValue("NextStep")}</div>
+    ),
+    enableSorting: false,
+    enableHiding: true,
+  },
+  {
+    accessorKey: "Remark",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Remarks" />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[200px]">{row.getValue("Remark")}</div>
+    ),
+    enableSorting: false,
+    enableHiding: true,
+  },
   // {
   //   accessorKey: "status",
   //   header: ({ column }) => (
