@@ -12,7 +12,7 @@ export const RootLayout = () => {
       </div>
 
       {/* main page */}
-      <div className="w-full h-full">
+      <div className="w-full h-full overflow-x-auto">
         <Outlet />
         <Toaster />
       </div>
