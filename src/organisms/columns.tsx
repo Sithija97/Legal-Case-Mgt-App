@@ -55,7 +55,7 @@ export const columns: ColumnDef<Case>[] = [
       <DataTableColumnHeader column={column} title="Nature" />
     ),
     cell: ({ row }) => <div className="w-[50px]">{row.getValue("Nature")}</div>,
-    enableSorting: true,
+    enableSorting: false,
     enableHiding: true,
   },
   {
@@ -181,7 +181,7 @@ export const columns: ColumnDef<Case>[] = [
     cell: ({ row }) => (
       <div className="w-[120px]">{row.getValue("PreviousStep")}</div>
     ),
-    enableSorting: true,
+    enableSorting: false,
     enableHiding: true,
   },
   {
@@ -192,7 +192,7 @@ export const columns: ColumnDef<Case>[] = [
     cell: ({ row }) => (
       <div className="w-[120px]">{row.getValue("NextDate")}</div>
     ),
-    enableSorting: false,
+    enableSorting: true,
     enableHiding: true,
   },
   {
