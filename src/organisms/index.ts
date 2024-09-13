@@ -1,6 +1,7 @@
 export * from "./sidebar";
 export * from "./columns";
 export * from "./data-table";
+export * from "./default-columns";
 export * from "./import-file-modal";
 export * from "./data-table-column-header";
 export * from "./data-table-faceted-filter";
