@@ -11,16 +11,32 @@ import {
 
 export const labels = [
   {
-    value: "bug",
-    label: "Bug",
+    value: "dnma",
+    label: "DNMA",
   },
   {
-    value: "feature",
-    label: "Feature",
+    value: "withdrawn",
+    label: "Withdrawn",
   },
   {
-    value: "documentation",
-    label: "Documentation",
+    value: "settled",
+    label: "Settled",
+  },
+  {
+    value: "ongoing",
+    label: "Ongoing",
+  },
+  {
+    value: "mc matters",
+    label: "MC Matters",
+  },
+  {
+    value: "chc",
+    label: "CHC",
+  },
+  {
+    value: "outstation",
+    label: "Outstation",
   },
 ];
 
