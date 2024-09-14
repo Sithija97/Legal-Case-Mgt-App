@@ -13,8 +13,8 @@ export const SideNavBar = () => {
   const onlyWidth = useWindowWidth();
   const mobileWidth = onlyWidth < 768;
 
+  const navigateToHome = () => navigate("/");
   const navigateToCases = () => navigate("/cases");
-  const navigateToHome = () => navigate("/home");
   const navigateToUsers = () => navigate("/users");
 
   return (

@@ -2,10 +2,9 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { labels, priorities, statuses } from "../data/data";
+import { labels } from "../data/data";
 import { Task } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
 import { Checkbox } from "@/atoms/checkbox";
 import { Badge } from "@/atoms/badge";
 import { formatId } from "@/utils";

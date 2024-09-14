@@ -125,7 +125,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function BarChartSection() {
+export const BarChartSection = () => {
   const [activeChart, setActiveChart] =
     React.useState<keyof typeof chartConfig>("desktop");
 
@@ -181,6 +181,20 @@ export function BarChartSection() {
             }}
           >
             <CartesianGrid vertical={false} />
+            {/* <XAxis
+              dataKey="date"
+              tickLine={false}
+              axisLine={false}
+              tickMargin={8}
+              minTickGap={32}
+              tickFormatter={(value) => {
+                const date = new Date(value);
+                return date.toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                });
+              }}
+            /> */}
             <XAxis
               dataKey="date"
               tickLine={false}
@@ -216,4 +230,4 @@ export function BarChartSection() {
       </CardContent>
     </Card>
   );
-}
+};

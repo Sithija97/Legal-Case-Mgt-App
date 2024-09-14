@@ -21,7 +21,6 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const onSubmit = (e: any) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log(users);
     const emailList = users.map((user) => user.email);
     // Use includes to check if the email exists
     if (emailList.includes(email)) {

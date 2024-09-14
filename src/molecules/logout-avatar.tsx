@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from "@/atoms/avatar";
+import { Button } from "@/atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,18 +9,14 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/atoms/dropdown-menu";
-import { RootState, useAppDispatch, useAppSelector } from "@/store/store";
+import { useAppDispatch } from "@/store/store";
 import { logoutUser } from "@/store/user-slice";
-import { getInitials } from "@/utils";
+import { UserRound } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export const LogoutAvatar = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const { loggedInUser } = useAppSelector(
-    (state: RootState) => state.usersState
-  );
 
   const logout = () => {
     dispatch(logoutUser());
@@ -29,11 +25,13 @@ export const LogoutAvatar = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer">
-          <AvatarFallback>
-            {loggedInUser && getInitials(loggedInUser?.name)}
-          </AvatarFallback>
-        </Avatar>
+        <Button
+          variant={"ghost"}
+          size={"icon"}
+          className=" border rounded-full"
+        >
+          <UserRound className="w-6 text-gray-600" />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>

@@ -7,7 +7,7 @@ export const HomeTemplate = () => {
   const { totalCompanies, totalCases, totalOngoingCases, totalUsers } =
     useAppSelector((state: RootState) => state.rootState);
   return (
-    <div className="xl:space-y-6 2xl:space-y-8 ">
+    <div className="xl:space-y-6 2xl:space-y-10 ">
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
         <SummaryCard
           title="Total Companies"

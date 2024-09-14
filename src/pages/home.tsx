@@ -17,7 +17,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="h-screen p-8">
+    <div className="h-screen p-8 2xl:p-10">
       <HomeTemplate />
     </div>
   );

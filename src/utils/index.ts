@@ -16,8 +16,3 @@ export const formatId = (name: string, id: string): string => {
   // Format and return the desired string
   return `${name}-${lastFourChars}`;
 };
-
-export const getInitials = (name: string): string => {
-  console.log("name :", name);
-  return name;
-};
