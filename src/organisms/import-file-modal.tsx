@@ -146,7 +146,7 @@ export const ImportFileModal = ({ isOpen, onClose }: IProps) => {
           <Button
             type="submit"
             variant="default"
-            className="ml-auto bg-blue-700 hover:bg-blue-700"
+            className="ml-auto bg-blue-800 hover:bg-blue-700"
             onClick={handleSubmit}
           >
             Import

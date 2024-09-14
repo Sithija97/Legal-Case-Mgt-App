@@ -7,7 +7,7 @@ export const RootLayout = () => {
   return (
     <section className={cn("min-h-screen w-full flex")}>
       {/* sidebar */}
-      <div className=" bg-blue-800">
+      <div className="bg-blue-800">
         <SideNavBar />
       </div>
 

@@ -3,6 +3,7 @@ import { InitialUsersState } from "../types";
 
 const initialState: InitialUsersState = {
   users: [],
+  loggedInUser: null,
 };
 
 const caseSlice = createSlice({
@@ -12,11 +13,18 @@ const caseSlice = createSlice({
     setUsers: (state, { payload }) => {
       state.users = payload;
     },
+    setLoggedInUser: (state, { payload }) => {
+      state.loggedInUser = payload;
+    },
     clearUsers: (state) => {
       state.users = initialState.users;
+    },
+    logoutUser: (state) => {
+      state.loggedInUser = initialState.loggedInUser;
     },
   },
 });
 
-export const { setUsers, clearUsers } = caseSlice.actions;
+export const { setUsers, setLoggedInUser, clearUsers, logoutUser } =
+  caseSlice.actions;
 export default caseSlice.reducer;

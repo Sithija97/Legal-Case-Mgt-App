@@ -25,7 +25,6 @@ export type User = {
   email: string;
   role: string;
   company: string;
-  createdAt: Date;
 };
 
 export type InitialCaseState = {
@@ -34,6 +33,7 @@ export type InitialCaseState = {
 
 export type InitialUsersState = {
   users: User[];
+  loggedInUser: User | null;
 };
 
 export type InitialUserState = {

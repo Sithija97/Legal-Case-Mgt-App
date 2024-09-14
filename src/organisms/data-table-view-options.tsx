@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { ImportFileModal } from "./import-file-modal";
 import { TABLE_TYPE } from "@/enums";
 import { AddUserModal } from "./add-user-modal";
+import { LogoutAvatar } from "@/molecules/logout-avatar";
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
@@ -48,7 +49,7 @@ export function DataTableViewOptions<TData>({
             type="button"
             size={"sm"}
             onClick={handleFileImportModal}
-            className="bg-blue-800 hover:bg-blue-700 text-blue-200 hover:text-white"
+            className="bg-blue-800 hover:bg-blue-700 text-slate-200 hover:text-white"
           >
             <FileUp className="mr-2 h-4 w-4" /> Import File
           </Button>
@@ -57,7 +58,7 @@ export function DataTableViewOptions<TData>({
             type="button"
             size={"sm"}
             onClick={handleAddUserModal}
-            className="bg-blue-800 hover:bg-blue-700 text-blue-200 hover:text-white"
+            className="bg-blue-800 hover:bg-blue-700 text-slate-200 hover:text-white"
           >
             <UserRoundPlus className="mr-2 h-4 w-4" /> Add User
           </Button>
@@ -99,6 +100,7 @@ export function DataTableViewOptions<TData>({
               })}
           </DropdownMenuContent>
         </DropdownMenu>
+        <LogoutAvatar />
       </div>
       <ImportFileModal isOpen={open} onClose={() => setOpen(!open)} />
       <AddUserModal

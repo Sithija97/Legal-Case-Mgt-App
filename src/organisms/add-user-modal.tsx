@@ -71,7 +71,6 @@ export const AddUserModal = ({ isOpen, onClose }: IProps) => {
         email: formData.email,
         role: formData.role,
         company: formData.company,
-        createdAt: new Date(),
       });
       onClose();
       setFormData(initialState);
@@ -163,7 +162,7 @@ export const AddUserModal = ({ isOpen, onClose }: IProps) => {
           <Button
             type="submit"
             variant="default"
-            className="ml-auto bg-blue-700 hover:bg-blue-700"
+            className="ml-auto bg-blue-800 hover:bg-blue-700"
             onClick={handleSubmit}
           >
             Add
