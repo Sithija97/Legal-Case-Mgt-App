@@ -4,14 +4,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { labels, priorities, statuses } from "@/data/data";
 import { Badge } from "@/atoms/badge";
+import { formatId } from "@/utils";
 // import { DataTableRowActions } from "./data-table-row-actions";
-
-const formatId = (id: string): string => {
-  // Extract the last 4 characters of the ID
-  const lastFourChars = id.slice(-2);
-  // Format and return the desired string
-  return `CASE-${lastFourChars}`;
-};
 
 export const columns: ColumnDef<Case>[] = [
   {
@@ -44,7 +38,7 @@ export const columns: ColumnDef<Case>[] = [
       <DataTableColumnHeader column={column} title="Case ID" />
     ),
     cell: ({ row }) => (
-      <div className="w-[60px]">{formatId(row.getValue("id"))}</div>
+      <div className="w-[60px]">{formatId("CASE", row.getValue("id"))}</div>
     ),
     enableSorting: false,
     enableHiding: false,

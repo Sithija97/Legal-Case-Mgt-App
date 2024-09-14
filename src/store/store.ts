@@ -1,10 +1,12 @@
 import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import caseReducer from "./case-slice";
+import userReducer from "./user-slice";
 
 export const store = configureStore({
   reducer: {
     caseState: caseReducer,
+    usersState: userReducer,
   },
   //   middleware: (getDefaultMiddleware) =>
   //     getDefaultMiddleware().concat(apiSlice.middleware),

@@ -17,7 +17,7 @@ import { db } from "@/config/firebase";
 import { toast } from "@/hooks/use-toast";
 import { format } from "date-fns";
 import { useAppDispatch } from "@/store/store";
-import { fetchCasesFromFirestore } from "@/templates";
+import { fetchCasesFromFirestore } from "@/pages";
 
 type IProps = {
   isOpen: boolean;

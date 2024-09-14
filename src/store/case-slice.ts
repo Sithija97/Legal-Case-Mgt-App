@@ -6,7 +6,7 @@ const initialState: InitialCaseState = {
 };
 
 const caseSlice = createSlice({
-  name: "baseState",
+  name: "caseState",
   initialState,
   reducers: {
     setCases: (state, { payload }) => {

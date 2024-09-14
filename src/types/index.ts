@@ -19,8 +19,21 @@ export type CourtCase = {
 
 export type CourtCaseWithId = CourtCase & { id: string };
 
+export type User = {
+  id?: string;
+  name: string;
+  email: string;
+  role: string;
+  company: string;
+  createdAt: Date;
+};
+
 export type InitialCaseState = {
   cases: any[];
+};
+
+export type InitialUsersState = {
+  users: User[];
 };
 
 export type InitialUserState = {

@@ -9,3 +9,10 @@ export const formatName = (word: string) => {
   const formattedWord = word.charAt(0) + word.slice(1).toLowerCase();
   return formattedWord;
 };
+
+export const formatId = (name: string, id: string): string => {
+  // Extract the last 4 characters of the ID
+  const lastFourChars = id.slice(-2);
+  // Format and return the desired string
+  return `${name}-${lastFourChars}`;
+};

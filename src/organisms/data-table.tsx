@@ -28,7 +28,7 @@ import { TABLE_TYPE } from "@/enums";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+  data: TData[] | any[];
   type: TABLE_TYPE;
 }
 
