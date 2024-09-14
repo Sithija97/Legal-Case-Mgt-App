@@ -9,18 +9,23 @@ import {
   DropdownMenuTrigger,
 } from "@/atoms/dropdown-menu";
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
-import { FileUp } from "lucide-react";
+import { FileUp, UserRoundPlus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ImportFileModal } from "./import-file-modal";
+import { TABLE_TYPE } from "@/enums";
+import { AddUserModal } from "./add-user-modal";
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
+  type: TABLE_TYPE;
 }
 
 export function DataTableViewOptions<TData>({
   table,
+  type,
 }: DataTableViewOptionsProps<TData>) {
   const [open, setOpen] = useState<boolean>(false);
+  const [openAddUser, setAddUserOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const hiddenColumns = ["NextDate", "NextStep", "Remark"];
@@ -33,18 +38,30 @@ export function DataTableViewOptions<TData>({
   }, []);
 
   const handleFileImportModal = () => setOpen(!open);
+  const handleAddUserModal = () => setAddUserOpen(!openAddUser);
 
   return (
     <>
       <div className="flex items-center gap-2">
-        <Button
-          type="button"
-          size={"sm"}
-          onClick={handleFileImportModal}
-          className="bg-blue-800 hover:bg-blue-700 text-blue-200 hover:text-white"
-        >
-          <FileUp className="mr-2 h-4 w-4" /> Import File
-        </Button>
+        {type === TABLE_TYPE.CASE ? (
+          <Button
+            type="button"
+            size={"sm"}
+            onClick={handleFileImportModal}
+            className="bg-blue-800 hover:bg-blue-700 text-blue-200 hover:text-white"
+          >
+            <FileUp className="mr-2 h-4 w-4" /> Import File
+          </Button>
+        ) : (
+          <Button
+            type="button"
+            size={"sm"}
+            onClick={handleAddUserModal}
+            className="bg-blue-800 hover:bg-blue-700 text-blue-200 hover:text-white"
+          >
+            <UserRoundPlus className="mr-2 h-4 w-4" /> Add User
+          </Button>
+        )}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -84,6 +101,10 @@ export function DataTableViewOptions<TData>({
         </DropdownMenu>
       </div>
       <ImportFileModal isOpen={open} onClose={() => setOpen(!open)} />
+      <AddUserModal
+        isOpen={openAddUser}
+        onClose={() => setAddUserOpen(!openAddUser)}
+      />
     </>
   );
 }

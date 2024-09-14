@@ -24,19 +24,18 @@ import {
 } from "@/atoms/table";
 import { DataTablePagination } from "./data-table-pagination";
 import { nanoid } from "@reduxjs/toolkit";
+import { TABLE_TYPE } from "@/enums";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  open?: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  type: TABLE_TYPE;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  open,
-  setOpen,
+  type,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -70,7 +69,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4 2xl:space-y-6">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} type={type} />
       <div className="rounded-md border xl:max-h-[485px] 2xl:max-h-[735px] overflow-auto">
         <Table>
           <TableHeader>

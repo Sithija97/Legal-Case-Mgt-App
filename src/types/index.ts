@@ -22,3 +22,10 @@ export type CourtCaseWithId = CourtCase & { id: string };
 export type InitialCaseState = {
   cases: any[];
 };
+
+export type InitialUserState = {
+  name: string;
+  email: string;
+  role: string;
+  company: string;
+};

@@ -85,3 +85,5 @@ export const priorities = [
     icon: ArrowUpIcon,
   },
 ];
+
+export const companies = ["Idle", "MBSL", "COMMERCIAL", "HNB"];

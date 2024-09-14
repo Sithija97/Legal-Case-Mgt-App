@@ -97,7 +97,7 @@ export const ImportFileModal = ({ isOpen, onClose }: IProps) => {
       toast({
         title: "Uploading documents...",
         description: format(new Date(), "EEEE, MMMM do, yyyy 'at' h:mm a"),
-        duration: 5500,
+        duration: 6000,
       });
 
       // Use `Promise.all` to ensure all cases are added before showing the toast
