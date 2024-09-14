@@ -2,7 +2,7 @@ import { Checkbox } from "@/atoms/checkbox";
 import { Case } from "@/data/schema";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from "./data-table-column-header";
-import { labels, priorities, statuses } from "@/data/data";
+import { labels } from "@/data/data";
 import { Badge } from "@/atoms/badge";
 import { formatId } from "@/utils";
 // import { DataTableRowActions } from "./data-table-row-actions";

@@ -1,4 +1,5 @@
 import { SummaryCard } from "@/molecules";
+import { BarChartSection } from "@/organisms/bar-chart";
 import { RootState, useAppSelector } from "@/store/store";
 import { BriefcaseBusiness, File, FilePen, UsersRound } from "lucide-react";
 
@@ -6,7 +7,7 @@ export const HomeTemplate = () => {
   const { totalCompanies, totalCases, totalOngoingCases, totalUsers } =
     useAppSelector((state: RootState) => state.rootState);
   return (
-    <>
+    <div className="xl:space-y-6 2xl:space-y-8 ">
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
         <SummaryCard
           title="Total Companies"
@@ -33,6 +34,7 @@ export const HomeTemplate = () => {
           icon={UsersRound}
         />
       </div>
-    </>
+      <BarChartSection />
+    </div>
   );
 };
