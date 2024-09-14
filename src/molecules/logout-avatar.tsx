@@ -1,17 +1,12 @@
 import { Avatar, AvatarFallback } from "@/atoms/avatar";
-import { Button } from "@/atoms/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/atoms/dropdown-menu";
 import { RootState, useAppDispatch, useAppSelector } from "@/store/store";
@@ -36,7 +31,7 @@ export const LogoutAvatar = () => {
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer">
           <AvatarFallback>
-            {getInitials(loggedInUser?.name || "")}
+            {loggedInUser && getInitials(loggedInUser?.name)}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

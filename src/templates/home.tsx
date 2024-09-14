@@ -1,14 +1,38 @@
-import React from "react";
-import { fetchCasesFromFirestore, fetchUsersFromFirestore } from "@/pages";
-import { useAppDispatch } from "@/store/store";
+import { SummaryCard } from "@/molecules";
+import { RootState, useAppSelector } from "@/store/store";
+import { BriefcaseBusiness, File, FilePen, UsersRound } from "lucide-react";
 
 export const HomeTemplate = () => {
-  const dispatch = useAppDispatch();
-
-  React.useEffect(() => {
-    fetchCasesFromFirestore(dispatch);
-    fetchUsersFromFirestore(dispatch);
-  }, []);
-
-  return <div>Home</div>;
+  const { totalCompanies, totalCases, totalOngoingCases, totalUsers } =
+    useAppSelector((state: RootState) => state.rootState);
+  return (
+    <>
+      <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+        <SummaryCard
+          title="Total Companies"
+          value={totalCompanies}
+          comparison="Partnerships remain steady. "
+          icon={BriefcaseBusiness}
+        />
+        <SummaryCard
+          title="Total Cases"
+          value={totalCases}
+          comparison="Growing due to new clients."
+          icon={File}
+        />
+        <SummaryCard
+          title="Total Ongoing Cases"
+          value={totalOngoingCases}
+          comparison="Active cases progressing well."
+          icon={FilePen}
+        />
+        <SummaryCard
+          title="No. of Users"
+          value={totalUsers}
+          comparison="User activity consistent."
+          icon={UsersRound}
+        />
+      </div>
+    </>
+  );
 };

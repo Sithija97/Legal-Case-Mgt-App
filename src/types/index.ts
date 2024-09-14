@@ -27,6 +27,13 @@ export type User = {
   company: string;
 };
 
+export type InitialRootState = {
+  totalCompanies: number;
+  totalCases: number;
+  totalOngoingCases: number;
+  totalUsers: number;
+};
+
 export type InitialCaseState = {
   cases: any[];
 };

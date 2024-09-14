@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export const SideNavBar = () => {
   const navigate = useNavigate();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
 
   const onlyWidth = useWindowWidth();
