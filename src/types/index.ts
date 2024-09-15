@@ -36,11 +36,13 @@ export type InitialRootState = {
 
 export type InitialCaseState = {
   cases: any[];
+  selectedCase: CourtCaseWithId | null;
 };
 
 export type InitialUsersState = {
   users: User[];
   loggedInUser: User | null;
+  selectedUser: User | null;
 };
 
 export type InitialUserState = {

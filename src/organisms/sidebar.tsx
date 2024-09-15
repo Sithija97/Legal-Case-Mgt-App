@@ -4,6 +4,7 @@ import { useWindowWidth } from "@react-hook/window-size";
 import { NavBar } from "../molecules";
 import { Button } from "../atoms/button";
 import { useNavigate } from "react-router-dom";
+import { CASES, ROOT, USERS } from "@/router";
 
 export const SideNavBar = () => {
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ export const SideNavBar = () => {
   const onlyWidth = useWindowWidth();
   const mobileWidth = onlyWidth < 768;
 
-  const navigateToHome = () => navigate("/");
-  const navigateToCases = () => navigate("/cases");
-  const navigateToUsers = () => navigate("/users");
+  const navigateToHome = () => navigate(ROOT);
+  const navigateToCases = () => navigate(CASES);
+  const navigateToUsers = () => navigate(USERS);
 
   return (
     <div className={`relative px-3 pb-10 pt-24 ${!isCollapsed && "min-w-64"}`}>

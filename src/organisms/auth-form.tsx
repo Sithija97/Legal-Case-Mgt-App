@@ -7,6 +7,7 @@ import { Spinner } from "@/molecules";
 import { RootState, useAppDispatch, useAppSelector } from "@/store/store";
 import { useNavigate } from "react-router-dom";
 import { setLoggedInUser } from "@/store/user-slice";
+import { CASES } from "@/router";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -28,7 +29,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       console.log(`The email ${email} is already in the users array.`);
       dispatch(setLoggedInUser(user));
       setIsLoading(false);
-      navigate("/users");
+      navigate(CASES);
     } else {
       console.log(`The email ${email} is not in the users array.`);
       setIsLoading(false);

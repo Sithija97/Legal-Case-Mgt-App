@@ -1,15 +1,20 @@
 import { Cases, Home, Root, SignIn, Users } from "@/pages";
 import { createBrowserRouter } from "react-router-dom";
 
+export const ROOT = "/";
+export const SIGN_IN = "/sign-in";
+export const CASES = "/cases";
+export const USERS = "/users";
+
 export const router = createBrowserRouter([
-  { path: "/sign-in/*", element: <SignIn /> },
+  { path: SIGN_IN, element: <SignIn /> },
   {
-    path: "/",
+    path: ROOT,
     element: <Root />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/cases", element: <Cases /> },
-      { path: "/users", element: <Users /> },
+      { path: ROOT, element: <Home /> },
+      { path: CASES, element: <Cases /> },
+      { path: USERS, element: <Users /> },
     ],
   },
 ]);

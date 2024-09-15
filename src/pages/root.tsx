@@ -1,11 +1,13 @@
 import { db } from "@/config/firebase";
 import { setCases } from "@/store/case-slice";
 import { setStats } from "@/store/root-slice";
-import { useAppDispatch } from "@/store/store";
+import { RootState, useAppDispatch, useAppSelector } from "@/store/store";
 import { setUsers } from "@/store/user-slice";
 import { RootLayout } from "@/templates";
 import { CourtCase, CourtCaseWithId, User } from "@/types";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Exportable function to fetch court cases from Firestore
 export const fetchCasesFromFirestore = async (
@@ -88,5 +90,16 @@ export const fetchDashboardData = async (
 };
 
 export const Root = () => {
+  const navigate = useNavigate();
+  const { loggedInUser } = useAppSelector(
+    (state: RootState) => state.usersState
+  );
+
+  useEffect(() => {
+    if (!loggedInUser) {
+      navigate("/sign-in");
+    }
+  }, []);
+
   return <RootLayout />;
 };

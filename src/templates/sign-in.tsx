@@ -2,13 +2,14 @@ import { buttonVariants } from "@/atoms/button";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { UserAuthForm } from "@/organisms";
+import { SIGN_IN } from "@/router";
 
 export const SignInTemplate = () => {
   return (
     <>
       <div className="container relative hidden h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
-          to="/examples/authentication"
+          to={SIGN_IN}
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "absolute right-4 top-4 md:right-8 md:top-8"

@@ -34,7 +34,7 @@ export const HomeTemplate = () => {
           icon={UsersRound}
         />
       </div>
-      <BarChartSection />
+      {/* <BarChartSection /> */}
     </div>
   );
 };
