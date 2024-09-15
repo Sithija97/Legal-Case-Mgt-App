@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/atoms/dropdown-menu";
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
-import { FileUp, UserRoundPlus } from "lucide-react";
+import { FileUp, MonitorDown, UserRoundPlus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ImportFileModal } from "./import-file-modal";
 import { TABLE_TYPE } from "@/enums";
@@ -45,14 +45,25 @@ export function DataTableViewOptions<TData>({
     <>
       <div className="flex items-center gap-2">
         {type === TABLE_TYPE.CASE ? (
-          <Button
-            type="button"
-            size={"sm"}
-            onClick={handleFileImportModal}
-            className="bg-blue-800 hover:bg-blue-700 text-slate-200 hover:text-white"
-          >
-            <FileUp className="mr-2 h-4 w-4" /> Import File
-          </Button>
+          <>
+            <Button
+              type="button"
+              size={"sm"}
+              onClick={handleFileImportModal}
+              className="bg-blue-800 hover:bg-blue-700 text-slate-200 hover:text-white"
+            >
+              <FileUp className="mr-2 h-4 w-4" /> Import File
+            </Button>
+            <Button
+              type="button"
+              size={"sm"}
+              variant={"ghost"}
+              // onClick={handleFileImportModal}
+              className="bg-slate-100 hover:bg-slate-200 "
+            >
+              <MonitorDown className="mr-2 h-4 w-4" /> Export File
+            </Button>
+          </>
         ) : (
           <Button
             type="button"

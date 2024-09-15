@@ -4,6 +4,7 @@ export * from "./auth-form";
 export * from "./data-table";
 export * from "./user-columns";
 export * from "./add-user-modal";
+export * from "./add-case-modal";
 export * from "./import-file-modal";
 export * from "./data-table-column-header";
 export * from "./data-table-faceted-filter";

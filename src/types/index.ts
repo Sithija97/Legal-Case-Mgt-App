@@ -46,6 +46,7 @@ export type InitialUsersState = {
 };
 
 export type InitialUserState = {
+  id: string;
   name: string;
   email: string;
   role: string;

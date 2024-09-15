@@ -5,7 +5,7 @@ import { DataTableColumnHeader } from "./data-table-column-header";
 import { labels } from "@/data/data";
 import { Badge } from "@/atoms/badge";
 import { formatId } from "@/utils";
-// import { DataTableRowActions } from "./data-table-row-actions";
+import { DataTableRowActions } from "./data-table-row-actions";
 
 export const columns: ColumnDef<Case>[] = [
   {
@@ -265,8 +265,8 @@ export const columns: ColumnDef<Case>[] = [
   //     return value.includes(row.getValue(id));
   //   },
   // },
-  // {
-  //   id: "actions",
-  //   cell: ({ row }) => <DataTableRowActions row={row} />,
-  // },
+  {
+    id: "actions",
+    cell: ({ row }) => <DataTableRowActions row={row} key={row.id} />,
+  },
 ];

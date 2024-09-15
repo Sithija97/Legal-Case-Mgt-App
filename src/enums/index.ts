@@ -9,3 +9,8 @@ export enum USER_ROLE {
   USER = "user",
   IDLE = "idle",
 }
+
+export enum MODAL_TYPE {
+  NEW = "new",
+  EDIT = "edit",
+}

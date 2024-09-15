@@ -1,5 +1,4 @@
 import { SummaryCard } from "@/molecules";
-import { BarChartSection } from "@/organisms/bar-chart";
 import { RootState, useAppSelector } from "@/store/store";
 import { BriefcaseBusiness, File, FilePen, UsersRound } from "lucide-react";
 

@@ -8,6 +8,7 @@ import { DataTableColumnHeader } from "./data-table-column-header";
 import { Checkbox } from "@/atoms/checkbox";
 import { Badge } from "@/atoms/badge";
 import { formatId } from "@/utils";
+import { DataTableRowActions } from "./data-table-row-actions";
 
 export const userColumns: ColumnDef<Task>[] = [
   {
@@ -92,8 +93,8 @@ export const userColumns: ColumnDef<Task>[] = [
     enableSorting: true,
     enableHiding: true,
   },
-  //   {
-  //     id: "actions",
-  //     cell: ({ row }) => <DataTableRowActions row={row} />,
-  //   },
+  {
+    id: "actions",
+    cell: ({ row }) => <DataTableRowActions row={row} key={row.id} />,
+  },
 ];
