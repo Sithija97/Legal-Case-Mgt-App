@@ -1,4 +1,5 @@
 import { SummaryCard } from "@/molecules";
+import { DashboardPieChart, DashboardTable } from "@/organisms";
 import { RootState, useAppSelector } from "@/store/store";
 import { BriefcaseBusiness, File, FilePen, UsersRound } from "lucide-react";
 
@@ -33,7 +34,15 @@ export const HomeTemplate = () => {
           icon={UsersRound}
         />
       </div>
-      {/* <BarChartSection /> */}
+      <div className="grid xl:grid-cols-3 gap-4">
+        <div className="xl:col-span-2  p-4">
+          <DashboardTable />
+        </div>
+
+        <div>
+          <DashboardPieChart />
+        </div>
+      </div>
     </div>
   );
 };
