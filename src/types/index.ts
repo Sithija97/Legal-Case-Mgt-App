@@ -27,11 +27,23 @@ export type User = {
   company: string;
 };
 
+export type CasesCountByLabel = {
+  CHC: number;
+  DNMA: number;
+  MC_Matters: number;
+  Ongoing: number;
+  Outstation: number;
+  Settled: number;
+  Withdrawn: number;
+};
+
 export type InitialRootState = {
   totalCompanies: number;
   totalCases: number;
   totalOngoingCases: number;
   totalUsers: number;
+  totalOngoingCasesData: CourtCaseWithId[];
+  casesCountByLabel: CasesCountByLabel;
 };
 
 export type InitialCaseState = {

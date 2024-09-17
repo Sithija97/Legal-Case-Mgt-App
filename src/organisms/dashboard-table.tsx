@@ -4,9 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/atoms/dropdown-menu";
 import { Input } from "@/atoms/input";
@@ -18,13 +15,9 @@ import {
   TableCell,
   Table,
 } from "@/atoms/table";
-import { data } from "@/data/data";
-import { Payment } from "@/types";
-import {
-  CaretSortIcon,
-  ChevronDownIcon,
-  DotsHorizontalIcon,
-} from "@radix-ui/react-icons";
+import { RootState, useAppSelector } from "@/store/store";
+import { CourtCaseWithId } from "@/types";
+import { CaretSortIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -39,7 +32,7 @@ import {
 } from "@tanstack/react-table";
 import React from "react";
 
-export const dashboardColumns: ColumnDef<Payment>[] = [
+export const dashboardColumns: ColumnDef<CourtCaseWithId>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -63,74 +56,70 @@ export const dashboardColumns: ColumnDef<Payment>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "CaseNumber",
+    header: "Case Number",
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("status")}</div>
+      <div className="capitalize">{row.getValue("CaseNumber")}</div>
     ),
   },
   {
-    accessorKey: "email",
+    accessorKey: "FacilityNumber",
+    header: "Facility Number",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("FacilityNumber")}</div>
+    ),
+  },
+  {
+    accessorKey: "CompanyName",
+    header: "Company",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("CompanyName")}</div>
+    ),
+  },
+  {
+    accessorKey: "Nature",
+    header: "Nature",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("Nature")}</div>
+    ),
+  },
+  {
+    accessorKey: "CourtHouse",
+    header: "Court",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("CourtHouse")}</div>
+    ),
+  },
+  {
+    accessorKey: "NextDate",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Next Date
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       );
     },
-    cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
+    cell: ({ row }) => (
+      <div className="lowercase">{row.getValue("NextDate")}</div>
+    ),
   },
   {
-    accessorKey: "amount",
-    header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-
-      // Format the amount as a dollar amount
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <div className="text-right font-medium">{formatted}</div>;
-    },
-  },
-  {
-    id: "actions",
-    enableHiding: false,
-    cell: ({ row }) => {
-      const payment = row.original;
-
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <DotsHorizontalIcon className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      );
-    },
+    accessorKey: "NextStep",
+    header: "Next Step",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("NextStep")}</div>
+    ),
   },
 ];
 
 export const DashboardTable = () => {
+  const data = useAppSelector(
+    (state: RootState) => state.rootState.totalOngoingCasesData
+  );
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -163,10 +152,12 @@ export const DashboardTable = () => {
       <p className="text-start font-semibold">Recently added Ongoing cases</p>
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Search by case number..."
+          value={
+            (table.getColumn("CaseNumber")?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("CaseNumber")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />

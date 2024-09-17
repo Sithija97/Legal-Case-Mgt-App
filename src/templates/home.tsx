@@ -34,12 +34,12 @@ export const HomeTemplate = () => {
           icon={UsersRound}
         />
       </div>
-      <div className="grid xl:grid-cols-3 gap-4">
-        <div className="xl:col-span-2  p-4">
+      <div className="grid xl:grid-cols-3 gap-8">
+        <div className="xl:col-span-2  py-4">
           <DashboardTable />
         </div>
 
-        <div>
+        <div className="py-4">
           <DashboardPieChart />
         </div>
       </div>

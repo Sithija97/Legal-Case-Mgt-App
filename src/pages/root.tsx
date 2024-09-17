@@ -5,6 +5,7 @@ import { RootState, useAppDispatch, useAppSelector } from "@/store/store";
 import { setUsers } from "@/store/user-slice";
 import { RootLayout } from "@/templates";
 import { CourtCase, CourtCaseWithId, User } from "@/types";
+import { format } from "date-fns";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -65,6 +66,20 @@ export const fetchDashboardData = async (
     });
     const totalCompanies = companiesSet.size; // Total number of companies
 
+    // Cases Count By Label
+    const casesCountByLabel: { [label: string]: number } = {}; // Initialize object for counting cases by label
+    courtCasesSnapshot.forEach((doc) => {
+      const caseData = doc.data();
+
+      // Add company name to the set
+      companiesSet.add(caseData.CompanyName);
+
+      // Count cases based on their labels
+      let label = caseData.label || "Unlabeled"; // Use "Unlabeled" if label is missing
+      label = label.replace(/\s+/g, "_"); // Replace any space with an underscore
+      casesCountByLabel[label] = (casesCountByLabel[label] || 0) + 1;
+    });
+
     // Fetch ongoing cases (assuming 'NextStep' exists for ongoing cases)
     const ongoingCasesQuery = query(
       collection(db, "courtCases"),
@@ -73,12 +88,31 @@ export const fetchDashboardData = async (
     const ongoingCasesSnapshot = await getDocs(ongoingCasesQuery);
     const totalOngoingCases = ongoingCasesSnapshot.size; // Total ongoing cases
 
+    // Fetch ongoing cases where 'NextStep' is greater than today and label is 'Ongoing'
+    const today = format(new Date(), "dd.MM.yyyy"); // Format today's date as 'dd.MM.yyyy'
+    const ongoingCasesDataQuery = query(
+      collection(db, "courtCases"),
+      where("label", "==", "Ongoing"),
+      where("NextDate", ">", today) // Assuming 'NextStep' is a string in 'dd.MM.yyyy' format
+    );
+    const ongoingCasesDataSnapshot = await getDocs(ongoingCasesDataQuery);
+    const totalOngoingCasesData = ongoingCasesDataSnapshot.docs.map((doc) =>
+      doc.data()
+    );
+
     // Fetch total users
     const usersSnapshot = await getDocs(collection(db, "users"));
     const totalUsers = usersSnapshot.size; // Total number of users
 
     dispatch(
-      setStats({ totalCompanies, totalCases, totalOngoingCases, totalUsers })
+      setStats({
+        totalCompanies,
+        totalCases,
+        totalOngoingCases,
+        totalUsers,
+        totalOngoingCasesData,
+        casesCountByLabel,
+      })
     );
 
     // Return the data if you want to use it in the UI
