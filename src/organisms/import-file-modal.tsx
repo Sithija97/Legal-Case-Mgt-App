@@ -18,6 +18,7 @@ import { toast } from "@/hooks/use-toast";
 import { format } from "date-fns";
 import { useAppDispatch } from "@/store/store";
 import { fetchCasesFromFirestore } from "@/pages";
+import { Input } from "@/atoms/input";
 
 type IProps = {
   isOpen: boolean;
@@ -140,7 +141,16 @@ export const ImportFileModal = ({ isOpen, onClose }: IProps) => {
           </DialogDescription>
         </DialogHeader>
 
-        <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} />
+        <div className="grid w-full max-w-md items-center gap-1.5">
+          <Input
+            id="file"
+            type="file"
+            accept=".xlsx, .xls"
+            onChange={handleFileUpload}
+          />
+        </div>
+
+        {/* <input type="file" accept=".xlsx, .xls" onChange={handleFileUpload} /> */}
 
         <DialogFooter className="sm:justify-start">
           <Button
