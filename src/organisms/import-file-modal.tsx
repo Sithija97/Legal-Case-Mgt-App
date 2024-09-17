@@ -18,7 +18,6 @@ import { toast } from "@/hooks/use-toast";
 import { format } from "date-fns";
 import { useAppDispatch } from "@/store/store";
 import { fetchCasesFromFirestore } from "@/pages";
-import { Label } from "@/atoms/label";
 import { Input } from "@/atoms/input";
 
 type IProps = {

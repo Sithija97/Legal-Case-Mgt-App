@@ -64,10 +64,3 @@ export type InitialUserState = {
   role: string;
   company: string;
 };
-
-export type Payment = {
-  id: string;
-  amount: number;
-  status: "pending" | "processing" | "success" | "failed";
-  email: string;
-};
