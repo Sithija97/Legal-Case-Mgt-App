@@ -90,6 +90,8 @@ export const AddUserModal = ({ isOpen, data, type, onClose }: IProps) => {
         role: formData.role,
         company: formData.company,
       });
+
+      fetchUsersFromFirestore(dispatch);
       onClose();
       setFormData(initialState);
       toast({
