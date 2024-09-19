@@ -58,7 +58,7 @@ export function DataTableViewOptions<TData>({
               type="button"
               size={"sm"}
               variant={"ghost"}
-              // onClick={handleFileImportModal}
+              disabled
               className="bg-slate-100 hover:bg-slate-200 "
             >
               <MonitorDown className="mr-2 h-4 w-4" /> Export File
