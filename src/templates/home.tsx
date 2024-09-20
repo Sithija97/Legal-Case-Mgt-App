@@ -1,11 +1,24 @@
-import { SummaryCard } from "@/molecules";
+import { Spinner, SummaryCard } from "@/molecules";
 import { DashboardPieChart, DashboardTable } from "@/organisms";
 import { RootState, useAppSelector } from "@/store/store";
 import { BriefcaseBusiness, File, FilePen, UsersRound } from "lucide-react";
 
 export const HomeTemplate = () => {
-  const { totalCompanies, totalCases, totalOngoingCases, totalUsers } =
-    useAppSelector((state: RootState) => state.rootState);
+  const {
+    totalCompanies,
+    totalCases,
+    totalOngoingCases,
+    totalUsers,
+    isDashboardDataLoading,
+  } = useAppSelector((state: RootState) => state.rootState);
+
+  if (isDashboardDataLoading)
+    return (
+      <div className="h-full w-full flex items-center justify-center">
+        <Spinner color="text-blue-700" size="8" />
+      </div>
+    );
+
   return (
     <div className="xl:space-y-6 2xl:space-y-10 ">
       <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">

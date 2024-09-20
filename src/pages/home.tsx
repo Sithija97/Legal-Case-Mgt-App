@@ -1,19 +1,21 @@
 import { useAppDispatch } from "@/store/store";
 import { HomeTemplate } from "@/templates";
 import { useEffect } from "react";
-import {
-  fetchCasesFromFirestore,
-  fetchDashboardData,
-  fetchUsersFromFirestore,
-} from "./root";
+import { fetchDashboardData } from "@/store/root-slice";
+import { fetchCasesData } from "@/store/case-slice";
+import { fetchUsersData } from "@/store/user-slice";
 
 export const Home = () => {
   const dispatch = useAppDispatch();
 
+  const fetchData = async () => {
+    await dispatch(fetchDashboardData());
+    await dispatch(fetchCasesData());
+    await dispatch(fetchUsersData());
+  };
+
   useEffect(() => {
-    fetchDashboardData(dispatch);
-    fetchCasesFromFirestore(dispatch);
-    fetchUsersFromFirestore(dispatch);
+    fetchData();
   }, []);
 
   return (

@@ -1,5 +1,5 @@
-import { TableViewTemplateCopy } from "@/templates";
+import { CasesTemplate } from "@/templates";
 
 export const Cases = () => {
-  return <TableViewTemplateCopy />;
+  return <CasesTemplate />;
 };

@@ -23,7 +23,7 @@ import { db } from "@/config/firebase";
 import { Labels } from "@/data/data";
 import { MODAL_TYPE } from "@/enums";
 import { toast } from "@/hooks/use-toast";
-import { fetchCasesFromFirestore } from "@/pages";
+import { fetchCasesData } from "@/store/case-slice";
 import { useAppDispatch } from "@/store/store";
 import { CourtCaseWithId } from "@/types";
 import { format } from "date-fns";
@@ -102,7 +102,7 @@ export const AddCaseModal = ({ isOpen, data, type, onClose }: IProps) => {
         Remark: updatedFormData.Remark,
       });
 
-      fetchCasesFromFirestore(dispatch);
+      await dispatch(fetchCasesData());
 
       toast({
         title: "Case updated successfully.",

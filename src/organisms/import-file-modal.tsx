@@ -17,8 +17,8 @@ import { db } from "@/config/firebase";
 import { toast } from "@/hooks/use-toast";
 import { format } from "date-fns";
 import { useAppDispatch } from "@/store/store";
-import { fetchCasesFromFirestore } from "@/pages";
 import { Input } from "@/atoms/input";
+import { fetchCasesData } from "@/store/case-slice";
 
 type IProps = {
   isOpen: boolean;
@@ -115,7 +115,7 @@ export const ImportFileModal = ({ isOpen, onClose }: IProps) => {
       });
 
       // Fetch the latest cases from Firestore
-      fetchCasesFromFirestore(dispatch);
+      await dispatch(fetchCasesData());
 
       // Close the modal (if that's the intent)
       onClose();

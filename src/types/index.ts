@@ -42,19 +42,25 @@ export type InitialRootState = {
   totalCases: number;
   totalOngoingCases: number;
   totalUsers: number;
-  totalOngoingCasesData: CourtCaseWithId[];
-  casesCountByLabel: CasesCountByLabel;
+  totalOngoingCasesData: CourtCaseWithId[] | any;
+  casesCountByLabel: CasesCountByLabel | any;
+  isDashboardDataLoading: boolean;
+  isDashboardDataError: string | null;
 };
 
 export type InitialCaseState = {
   cases: any[];
   selectedCase: CourtCaseWithId | null;
+  isCasesDataLoading: boolean;
+  isCasesDataError: string | null;
 };
 
 export type InitialUsersState = {
   users: User[];
   loggedInUser: User | null;
   selectedUser: User | null;
+  isUsersDataLoading: boolean;
+  isUsersDataError: string | null;
 };
 
 export type InitialUserState = {

@@ -28,7 +28,7 @@ import { db } from "@/config/firebase";
 import { toast } from "@/hooks/use-toast";
 import { format } from "date-fns";
 import { useAppDispatch } from "@/store/store";
-import { fetchUsersFromFirestore } from "@/pages";
+import { fetchUsersData } from "@/store/user-slice";
 
 type IProps = {
   isOpen: boolean;
@@ -91,7 +91,7 @@ export const AddUserModal = ({ isOpen, data, type, onClose }: IProps) => {
         company: formData.company,
       });
 
-      fetchUsersFromFirestore(dispatch);
+      await dispatch(fetchUsersData());
       onClose();
       setFormData(initialState);
       toast({
@@ -117,7 +117,7 @@ export const AddUserModal = ({ isOpen, data, type, onClose }: IProps) => {
         company: formData.company,
       });
 
-      fetchUsersFromFirestore(dispatch);
+      await dispatch(fetchUsersData());
       onClose();
 
       toast({
