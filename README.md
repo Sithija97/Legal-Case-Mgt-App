@@ -39,9 +39,6 @@ Contributions are welcome! If you’d like to improve this project, feel free to
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
----
-
-Feel free to adapt this README for your specific needs!
 
 
 
