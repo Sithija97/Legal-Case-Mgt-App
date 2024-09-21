@@ -5,7 +5,7 @@ import { db } from "@/config/firebase";
 
 export const fetchCasesData = createAsyncThunk(
   "cases/fetchCasesData",
-  async (_, { dispatch, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     const courtCasesCollectionRef = collection(db, "courtCases");
     try {
       const querySnapshot = await getDocs(courtCasesCollectionRef);

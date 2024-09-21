@@ -1,15 +1,11 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  isRejectedWithValue,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { InitialUsersState, User } from "../types";
 import { db } from "@/config/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
 export const fetchUsersData = createAsyncThunk(
   "users/fetchUsersData",
-  async (_, { dispatch, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     const usersCollectionRef = collection(db, "users");
     try {
       const querySnapshot = await getDocs(usersCollectionRef);
